@@ -17,6 +17,7 @@ fun main() {
 }
 
 fun getMaxSum(input: List<String>, entries: Int): Int {
+    if (input.isEmpty()) return 0
     val result = ArrayList<Int>()
     var current = 0
     input.forEach {
@@ -32,5 +33,8 @@ fun getMaxSum(input: List<String>, entries: Int): Int {
         result.add(current)
 
     result.sort()
-    return result.takeLast(entries).sum()
+    return when {
+        result.isEmpty() -> 0
+        else -> result.takeLast(minOf(result.size, entries)).sum()
+    }
 }
