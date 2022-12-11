@@ -37,9 +37,9 @@ enum class RPS(
             return result.points + rps.points
         }
 
-        fun getByResult(other: String, resultString: String): Int {
-            val rps = RPS.getByOther(other)
-            val result = Result.of(resultString)
+        fun getByResult(otherRps: String, resultString: String): Int {
+            val rps = RPS.getByOther(otherRps)
+            val result = Result.getByOther(resultString)
             val value = when (result) {
                 Result.DRAW -> rps
                 Result.WIN -> values().first { it.wins == rps.other }
@@ -54,14 +54,14 @@ enum class RPS(
     }
 }
 
-enum class Result(val points: Int, private val stringValue: String) {
+enum class Result(val points: Int, private val other: String) {
     WIN(6, "Z"),
     DRAW(3, "Y"),
     LOSS(0, "X");
 
     companion object {
-        fun of(value: String): Result {
-            return values().first { it.stringValue == value }
+        fun getByOther(value: String): Result {
+            return values().first { it.other == value }
         }
     }
 }
