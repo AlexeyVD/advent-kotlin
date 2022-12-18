@@ -1,10 +1,10 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.map { toSections(it) }.filter { it.fullyCovered() }.size
+        return input.map { toSections(it) }.count { it.fullyCovered() }
     }
 
     fun part2(input: List<String>): Int {
-        return input.map { toSections(it) }.filter { it.intersected() }.size
+        return input.map { toSections(it) }.count { it.intersected() }
     }
 
     val testInput = readInput("Day04_test")
