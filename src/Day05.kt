@@ -72,9 +72,9 @@ class Command(
 class Executor(
     private val commands: ArrayDeque<Command>
 ) {
-    fun execute(state: CrateMover): CrateMover {
-        commands.forEach { state.apply(it) }
-        return state
+    fun execute(crateMover: CrateMover): CrateMover {
+        commands.forEach { crateMover.apply(it) }
+        return crateMover
     }
 }
 
