@@ -8,9 +8,8 @@ fun main() {
     }
 
     val testInput = readInput("Day05_test")
-    val res = part2(testInput)
     check(part1(testInput) == "CMZ")
-    check(res == "MCD")
+    check(part2(testInput) == "MCD")
 
     val input = readInput("Day05")
     println(part1(input))
